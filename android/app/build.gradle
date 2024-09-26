@@ -28,12 +28,21 @@ android {
     }
     
     signingConfigs {
+
         release {
-            storeFile file('D:/ReacNative-Project/weatherapplication/my-release-key.keystore')
-            storePassword 'biju123'  // Your keystore password
-            keyAlias 'my-key-alias'   // Your key alias
-            keyPassword 'biju123'      // Your key password
+            storeFile file('your_key_name.keystore')
+            storePassword 'android'
+            keyAlias 'your_key_alias'
+            keyPassword 'android'
         }
+        
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+
     }
     
     buildTypes {
@@ -41,7 +50,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-            signingConfig signingConfigs.release // Use the release signing config
+            signingConfig signingConfigs.debug // Use the release signing config
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -50,13 +59,17 @@ android {
 
 dependencies {
     implementation("com.facebook.react:react-android")
+    implementation project(':react-native-async-storage_async-storage')
+    implementation project(':react-native-community_geolocation')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':react-native-permissions')
+    implementation project(':react-native-vector-icons')
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {
         implementation jscFlavor
     }
 }
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
-
-implementation project(':react-native-async-storage')
-implementation project(':react-native-geolocation')

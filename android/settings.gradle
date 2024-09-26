@@ -4,10 +4,3 @@ extensions.configure(com.facebook.react.ReactSettingsExtension){ ex -> ex.autoli
 rootProject.name = 'weatherapplication'
 include ':app'
 includeBuild('../node_modules/@react-native/gradle-plugin')
-
-
-include ':react-native-async-storage'
-project(':react-native-async-storage').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-async-storage/async-storage/android')
-
-include ':react-native-geolocation'
-project(':react-native-geolocation').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/geolocation/android')
